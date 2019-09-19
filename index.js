@@ -6,6 +6,7 @@ const cors = require('cors');
 //Import the routes
 const AuthRouter = require('./routes/auth.routes');
 const UserRouter = require('./routes/user.routes');
+const ProductRouter = require('./routes/product.routes');
 
 const passport = require('passport');
 const cookieSession = require('cookie-session');
@@ -30,7 +31,7 @@ app.use(cookieSession({
 
 app.use('/auth', AuthRouter);
 app.use('/user', UserRouter);
-
+app.use('/product', ProductRouter);
 
 //Connect to the database
 mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-6yvlv.mongodb.net/ABES?retryWrites=true&w=majority`,

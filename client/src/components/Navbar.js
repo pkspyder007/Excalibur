@@ -24,16 +24,16 @@ export default class Navbar extends Component {
       <div>
         <nav className="blue darken-3">
           <div className="nav-wrapper">
-            <a href="/" className="brand-logo">Track It Down</a>
+            <a href="/" className="brand-logo left">Track It Down</a>
 
             {(this.state.loggedin) ? (
-              <ul className="right hide-on-med-and-down">
+              <ul className="right ">
                 <li><a href="/profile">Profile</a></li>
                 <li><a href="/logout">Logout</a></li>
               </ul>
             ) :
               (
-                <ul className="right hide-on-med-and-down">
+                <ul className="right">
                   <li><a href={`${config.server}/auth/google`}>Login</a></li>
                 </ul>
               )}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Navbar from './Navbar'
+import Main from './Main'
 
 
 export default class Home extends Component {
@@ -10,6 +11,9 @@ export default class Home extends Component {
     return (
       <div>
         <Navbar />
+        {(localStorage.getItem('ept-userid')) === 'false' || '' ? (<p>Please Log IN</p>) : (
+          <Main />
+        )}
       </div>
     )
   }
