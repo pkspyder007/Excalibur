@@ -15,12 +15,12 @@ ProductRouter.get('/user/:id', (req, res) => {
 });
 
 ProductRouter.post('/add/amazon', (req, res) => {
-  request.get(req.body.product.link, (err, ressponse, html) => {
-    if (!err && ressponse.statusCode == 200) {
+  request.get(req.body.product.link, (err, response, html) => {
+    if (!err && response.statusCode == 200) {
       let $ = cheerio.load(html);
       let i = $("span.a-size-medium").html();
       let b = i.split(';')
-      let c = b[b.length - 1].split(',')
+      let c = b[b.length - 1].split(','); console.log(c)
       let cp;
       if (c.length === 3) {
         cp = parseInt(c[0] + c[1] + c[2]);
@@ -31,7 +31,8 @@ ProductRouter.post('/add/amazon', (req, res) => {
         link: req.body.product.link,
         userid: req.body.product.userid,
         currentPrice: cp,
-        dropPrice: req.body.product.dropPrice
+        dropPrice: req.body.product.dropPrice,
+        site: 'amazon'
       };
       Product.create(product)
         .then(p => {
@@ -67,7 +68,8 @@ ProductRouter.post('/add/flipkart', (req, res) => {
         link: req.body.product.link,
         userid: req.body.product.userid,
         currentPrice: price,
-        dropPrice: req.body.product.dropPrice
+        dropPrice: req.body.product.dropPrice,
+        site: 'flipkart'
       };
       Product.create(product)
         .then(p => {
@@ -88,12 +90,12 @@ ProductRouter.post('/add/flipkart', (req, res) => {
 ProductRouter.post('/user/', (req, res) => {
   Product.find({ userid: req.body.id })
     .then(products => {
-      console.log(products)
       res.json(products)
     })
     .catch(err => {
       res.json({ msg: 'Error in retrieving products' })
     })
-})
+});
+
 
 module.exports = ProductRouter;

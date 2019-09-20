@@ -17,6 +17,10 @@ const ProductSchema = new Schema({
   },
   dropPrice: {
     type: Number
+  },
+  site: {
+    type: String,
+    required: true
   }
 
 });

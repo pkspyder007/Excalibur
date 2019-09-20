@@ -11,7 +11,9 @@ const ProductRouter = require('./routes/product.routes');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 
-
+require('./scraper/Amazon')
+require('./scraper/Flipkart')
+require('./scraper/Notify')
 
 //Initiat the app
 const app = express();
@@ -43,6 +45,9 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
   })
   .then(info => {
     console.log('Connected to database...');
+    setInterval(Amazon, 1000 * 60 * 60);
+    setInterval(Flipkart, 1000 * 60 * 60);
+    setInterval(Notify, 1000 * 60 * 60 * 5);
   })
   .catch(err => {
     console.log(err);
