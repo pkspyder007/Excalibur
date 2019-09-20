@@ -28,6 +28,7 @@ export default class Navbar extends Component {
 
             {(this.state.loggedin) ? (
               <ul className="right ">
+                <li><a href="/products">Products</a></li>
                 <li><a href="/profile">Profile</a></li>
                 <li><a href="/logout">Logout</a></li>
               </ul>

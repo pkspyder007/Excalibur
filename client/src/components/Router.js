@@ -5,6 +5,7 @@ import Home from './Home';
 import Login from './Login';
 import Logout from './Logout';
 import Profile from './Profile';
+import Products from './Products';
 
 export default function Router() {
   return (
@@ -15,6 +16,7 @@ export default function Router() {
           <Route path='/login/:token' component={Login} />
           <Route path="/logout" component={Logout} />
           <Route path='/profile' component={Profile} />
+          <Route path='/Products' component={Products} />
           <Route component={NotFound} />
         </Switch>
       </div>

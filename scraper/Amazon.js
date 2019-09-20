@@ -10,6 +10,7 @@ scraper = (url) => {
       var i = $("span.a-size-medium").html();
       var b = i.split(';')
       let price = parseInt(b[b.length - 1])
+
       return price
 
     } else {

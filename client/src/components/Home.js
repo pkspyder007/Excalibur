@@ -12,7 +12,10 @@ export default class Home extends Component {
       <div>
         <Navbar />
         {(localStorage.getItem('ept-userid')) === 'false' || '' ? (<p>Please Log IN</p>) : (
-          <Main />
+          <div>
+            <Main />
+
+          </div>
         )}
       </div>
     )
