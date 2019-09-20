@@ -45,13 +45,15 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
   })
   .then(info => {
     console.log('Connected to database...');
-    setInterval(Amazon, 1000 * 60 * 60);
-    setInterval(Flipkart, 1000 * 60 * 60);
-    setInterval(Notify, 1000 * 60 * 60 * 5);
+    //setInterval(Amazon, 1000 * 60 * 60);
+    //setInterval(Flipkart, 1000 * 60 * 60);
+    //setInterval(Notify, 1000 * 60 * 60 * 5);
+    Notify();
   })
   .catch(err => {
     console.log(err);
   });
+
 mongoose.Promise = global.Promise;
 
 //Start the server
