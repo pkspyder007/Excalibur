@@ -24,9 +24,9 @@ export default class Products extends Component {
         {(this.state.products.length === 0) ? (<h2>Sorry No products in your account yet</h2>) : (<h2>Your Products</h2>)}
         {this.state.products.map(p => {
           return (
-            <div key={p._id}>
-              Product Link : <a href={p.link} target="_blank">Click Here</a>
-              Current Price : {p.currentPrice}
+            <div key={Math.random(10)}>
+              Product Link : <a href={p.link} target="_blank" rel="noopener noreferrer">Click Here</a>
+
               DropPrice : {p.dropPrice}
               <br />
             </div>

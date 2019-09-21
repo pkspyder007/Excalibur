@@ -48,7 +48,7 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
     setInterval(Amazon, 1000 * 60 * 60);
     setInterval(Flipkart, 1000 * 60 * 60);
     setInterval(Notify, 1000 * 60 * 60 * 5);
-    Notify();
+
   })
   .catch(err => {
     console.log(err);

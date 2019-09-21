@@ -20,6 +20,9 @@ const GoogleUserSchema = new Schema({
   },
   pic: {
     type: String
+  },
+  products: {
+    type: Array
   }
 });
 

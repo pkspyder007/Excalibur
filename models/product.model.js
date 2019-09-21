@@ -8,14 +8,8 @@ const ProductSchema = new Schema({
     type: String,
     required: true
   },
-  userid: {
-    type: String,
-    required: true
-  },
+
   currentPrice: {
-    type: Number
-  },
-  dropPrice: {
     type: Number
   },
   site: {
