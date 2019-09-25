@@ -18,8 +18,10 @@ ProductRouter.post('/add/amazon', (req, res) => {
       } else {
         price = parseInt(c[0] + c[1])
       }
+      i = $("span#productTitle").text().replace(/\s\s+/g, '');
       const newProduct = {
         link: req.body.product.link,
+        name: i,
         site: 'amazon',
         currentPrice: price
       };
@@ -30,7 +32,8 @@ ProductRouter.post('/add/amazon', (req, res) => {
               User.findByIdAndUpdate(req.body.product.userid, {
                 products: [...user.products, {
                   id: product._id,
-                  dropPrice: req.body.dropPrice,
+                  name: i,
+                  dropPrice: req.body.prodropPrice,
                   link: req.body.product.link,
                   notified: false
                 }]
@@ -49,6 +52,7 @@ ProductRouter.post('/add/amazon', (req, res) => {
             User.findByIdAndUpdate(req.body.product.userid, {
               products: [...user.products, {
                 id: p[0]._id,
+                name: i,
                 dropPrice: req.body.product.dropPrice,
                 link: req.body.product.link,
                 notified: false
@@ -86,8 +90,10 @@ ProductRouter.post('/add/flipkart', (req, res) => {
       } else {
         price = parseInt(d[0] + d[1])
       }
+      let name = $('span._35KyD6').text();
       const newProduct = {
         link: req.body.product.link,
+        name: name,
         site: 'flipkart',
         currentPrice: price
       };
@@ -98,6 +104,7 @@ ProductRouter.post('/add/flipkart', (req, res) => {
               User.findByIdAndUpdate(req.body.product.userid, {
                 products: [...user.products, {
                   id: product._id,
+                  name: name,
                   dropPrice: req.body.dropPrice,
                   link: req.body.product.link,
                   notified: false
@@ -117,6 +124,7 @@ ProductRouter.post('/add/flipkart', (req, res) => {
             User.findByIdAndUpdate(req.body.product.userid, {
               products: [...user.products, {
                 id: p[0]._id,
+                name: name,
                 dropPrice: req.body.product.dropPrice,
                 link: req.body.product.link,
                 notified: false
@@ -145,6 +153,28 @@ ProductRouter.post('/user/', (req, res) => {
   }).catch(err => {
     console.log(err);
   })
+});
+
+ProductRouter.post('/delete', (req, res) => {
+
+  User.findById(req.body.userid).then(user => {
+    let newProducts = [];
+    user.products.map(product => {
+      if ((product.id != req.body.pid)) {
+        newProducts.push(product)
+      }
+    });
+    console.log(newProducts.length)
+    User.findByIdAndUpdate(req.body.userid, { products: newProducts }).then(updatedUser => {
+      res.json({ success: true })
+    }).catch(err => {
+      console.log(err);
+      res.json({ success: false });
+    })
+  }).catch(err => {
+    console.log(err)
+  })
+
 });
 
 

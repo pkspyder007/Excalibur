@@ -18,16 +18,32 @@ Notify = () => {
       user.products.map(p => {
         Product.findById(p.id).then(product => {
           if (p.dropPrice >= product.currentPrice) {
-            const mailOptions = {
-              from: 'praveenkr.564@gmail.com', // sender address
-              to: user.email, // list of receivers
-              subject: 'Track It Down Update', // Subject line
-              html: emailBody(p.link)
-            };
-            transporter.sendMail(mailOptions, (err, info) => {
-              if (err) console.log(err);
-              else console.log('email sent...');
-            })
+            if (p.notified === false) {
+              const mailOptions = {
+                from: 'praveenkr.564@gmail.com', // sender address
+                to: user.email, // list of receivers
+                subject: 'Track It Down Update', // Subject line
+                html: emailBody(p.link)
+              };
+              transporter.sendMail(mailOptions, (err, info) => {
+                if (err) console.log(err);
+                else {
+                  console.log('email sent...');
+                  let p = []
+                  p = user.products.map(pro => {
+                    if (pro.id === p.id) {
+                      pro.notified = true
+                    }
+                    return pro;
+                  })
+                  User.findByIdAndUpdate(user._id, { products: p }).then(uUser => {
+
+                  }).catch(err => {
+                    console.log(err);
+                  })
+                }
+              })
+            }
           }
         }).catch(err => {
           console.log(err);

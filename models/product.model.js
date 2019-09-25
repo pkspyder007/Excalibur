@@ -8,7 +8,10 @@ const ProductSchema = new Schema({
     type: String,
     required: true
   },
-
+  name: {
+    type: String,
+    default: 'Cannot fetch product name.'
+  },
   currentPrice: {
     type: Number
   },

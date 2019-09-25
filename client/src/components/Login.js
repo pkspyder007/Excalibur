@@ -14,7 +14,7 @@ export default class Login extends Component {
     })
     if (localStorage.getItem('ept-token') === 'false' || '') {
       this.setState({ msg: 'Error in logging in' })
-
+      this.props.history.push('/login-page')
     } else {
 
       this.props.history.push('/')
@@ -25,7 +25,6 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        logining in...{this.state.msg}
       </div>
     )
   }
