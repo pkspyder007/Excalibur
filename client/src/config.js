@@ -1,3 +1,3 @@
 module.exports = {
-  server: `//localhost:${process.env.PORT || 4000}`
+  server: `trackitdown.herokuapp.com`
 }
