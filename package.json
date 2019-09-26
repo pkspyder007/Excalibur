@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "nodemon index",
-    "client": "npm start --prefix client"
+    "start-dev": "nodemon index",
+    "start": "node index.js",
+    "client": "npm start --prefix client",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "Praveen Kumar",
   "license": "ISC",
