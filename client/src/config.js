@@ -1,3 +1,3 @@
 module.exports = {
-  server: `trackitdown.herokuapp.com`
+  server: `api-trackitdown.herokuapp.com`
 }

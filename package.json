@@ -7,8 +7,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start-dev": "nodemon index",
     "start": "node index.js",
-    "client": "npm start --prefix client",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "client": "npm start --prefix client"
   },
   "author": "Praveen Kumar",
   "license": "ISC",
