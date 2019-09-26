@@ -25,7 +25,7 @@ function ProductList(props) {
     if ((localStorage.getItem('ept-token') === 'false' || '')) {
       props.history.push('/login-page')
     } else {
-      axios.post(`${config.server}/product/user`, { id: userid }).then(res => {
+      axios.post(`/product/user`, { id: userid }).then(res => {
         setProducts(res.data)
         if (res.data.length < 1)
           setMsg('No Product found add a new product using homepage')
@@ -36,7 +36,7 @@ function ProductList(props) {
 
   const DeleteProduct = (e, dp) => {
     setLoading(true)
-    axios.post(`${config.server}/product/delete`, { userid: userid, pid: e.target.value }).then(res => {
+    axios.post(`/product/delete`, { userid: userid, pid: e.target.value }).then(res => {
       if (res.data.success === true) {
         setLoading(false)
         props.history.push('/product-page')

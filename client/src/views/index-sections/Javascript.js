@@ -25,7 +25,7 @@ function Javascript(props) {
   const [drop, setDrop] = React.useState(false);
 
   const addAmz = () => {
-    Axios.post(`${config.server}/product/add/amazon`, {
+    Axios.post(`/product/add/amazon`, {
       product: {
         link: amzLink,
         userid: localStorage.getItem('ept-userid'),
@@ -44,7 +44,7 @@ function Javascript(props) {
   }
 
   const addFlip = () => {
-    Axios.post(`${config.server}/product/add/flipkart`, {
+    Axios.post(`/product/add/flipkart`, {
       product: {
         link: flipLink,
         userid: localStorage.getItem('ept-userid'),
