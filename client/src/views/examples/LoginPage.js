@@ -16,7 +16,6 @@ import {
 
 // core components
 import ExamplesNavbar from "components/Navbars/ExamplesNavbar.js";
-const config = require('../../config.js')
 
 function LoginPage(props) {
   React.useEffect(() => {
@@ -35,7 +34,7 @@ function LoginPage(props) {
     if (!(localStorage.getItem('ept-token') === 'false' || '')) {
       props.history.push('/')
     }
-  }, [props.history, props.params])
+  }, [props.history]);
 
   return (
     <>
@@ -68,7 +67,7 @@ function LoginPage(props) {
                       block
                       className="btn-round"
                       color="info"
-                      href={`${config.server}/auth/google`}
+                      href={`/auth/google`}
                       size="lg"
                     >
                       Login Through Google

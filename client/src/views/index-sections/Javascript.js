@@ -13,7 +13,6 @@ import {
 import ReactLoading from 'react-loading';
 // core components
 
-const config = require('../../config')
 
 function Javascript(props) {
   const [modal1, setModal1] = React.useState(false);

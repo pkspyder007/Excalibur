@@ -12,7 +12,6 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
-const config = require('../../config')
 
 function IndexNavbar() {
   const [navbarColor, setNavbarColor] = React.useState("");
@@ -91,7 +90,7 @@ function IndexNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href={`${config.server}/auth/logout`}
+                  href={`/auth/logout`}
                   id="logout-tooltip"
                 >
                   <i className="now-ui-icons users_single-02"></i>

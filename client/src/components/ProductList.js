@@ -13,8 +13,6 @@ import {
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import DarkFooter from "components/Footers/DarkFooter.js";
 import ReactLoading from 'react-loading';
-const config = require('../config')
-
 function ProductList(props) {
   const userid = localStorage.getItem('ept-userid');
   const [msg, setMsg] = useState(false);
