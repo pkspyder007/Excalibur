@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const cors = require('cors');
+const path = require('path');
 //Import the routes
 const AuthRouter = require('./routes/auth.routes');
 const UserRouter = require('./routes/user.routes');
@@ -36,7 +37,7 @@ app.use('/user', UserRouter);
 app.use('/product', ProductRouter);
 
 //Connect to the database
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-6yvlv.mongodb.net/ABES?retryWrites=true&w=majority`,
+mongoose.connect(process.env.MONGO_URI || `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-6yvlv.mongodb.net/ABES?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useCreateIndex: true,
@@ -56,6 +57,14 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PA
   });
 
 mongoose.Promise = global.Promise;
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('./client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  })
+}
 
 //Start the server
 app.listen(process.env.PORT || 4000, () => {

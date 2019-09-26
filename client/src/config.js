@@ -1,3 +1,3 @@
 module.exports = {
-  server: '//localhost:5000'
+  server: `//localhost:${process.env.PORT || 4000}`
 }
