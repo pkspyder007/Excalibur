@@ -1,7 +1,10 @@
 {
   "name": "abes-backend",
   "version": "1.0.0",
-  "description": "The backend api for abes app and web app.",
+  "description": "The backend api for trackitdown app and web app.",
+  "engines": {
+    "node": "10.15.3"
+  },
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run server\" \"npm run client\"",
