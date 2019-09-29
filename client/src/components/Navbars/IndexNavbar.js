@@ -90,7 +90,7 @@ function IndexNavbar() {
               </NavItem>
               <NavItem>
                 <NavLink
-                  href={`/auth/logout`}
+                  href={`//localhost:5000/auth/logout`}
                   id="logout-tooltip"
                 >
                   <i className="now-ui-icons users_single-02"></i>

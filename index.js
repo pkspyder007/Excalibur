@@ -46,9 +46,10 @@ mongoose.connect(process.env.MONGO_URI || `mongodb+srv://${process.env.MONGO_USE
   })
   .then(info => {
     console.log('Connected to database...');
-    setInterval(Amazon, 1000 * 60 * 60);
-    setInterval(Flipkart, 1000 * 60 * 60);
-    setInterval(Notify, 1000 * 60 * 60 * 5);
+    setInterval(Amazon, 1000 * 60 * 60 * 5);
+    setInterval(Flipkart, 1000 * 60 * 60 * 5);
+    setInterval(Notify, 1000 * 60 * 60);
+    Notify();
 
 
   })

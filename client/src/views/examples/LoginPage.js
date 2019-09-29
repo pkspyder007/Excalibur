@@ -67,7 +67,7 @@ function LoginPage(props) {
                       block
                       className="btn-round"
                       color="info"
-                      href={`/auth/google`}
+                      href={`//localhost:5000/auth/google`}
                       size="lg"
                     >
                       Login Through Google

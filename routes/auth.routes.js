@@ -17,16 +17,16 @@ AuthRouter.get('/google/redirect', passport.authenticate('google'), (req, res) =
   }, process.env.JWT_SECRET, { expiresIn: '1hr' }
   );
   if (token) {
-    res.redirect('/login/' + token + '&' + req.user._id)
+    res.redirect('//localhost:3000/login/' + token + '&' + req.user._id)
 
   }
   else {
-    res.redirect('/login/' + 'false')
+    res.redirect('//localhost:3000/login/' + 'false')
   }
 });
 
 AuthRouter.get('/logout', (req, res) => {
-  res.redirect('/login/' + 'false')
+  res.redirect('//localhost:3000/login/' + 'false')
 })
 
 module.exports = AuthRouter;

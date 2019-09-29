@@ -2,6 +2,7 @@ import React from "react";
 import Axios from 'axios';
 // reactstrap components
 import {
+  Alert,
   Button,
   Container,
   Modal,
@@ -21,44 +22,57 @@ function Javascript(props) {
   const [flipLink, setFlipLink] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [msg, setMsg] = React.useState(false);
+  const [msgerr, setMsgerr] = React.useState(false);
   const [drop, setDrop] = React.useState(false);
 
   const addAmz = () => {
-    Axios.post(`/product/add/amazon`, {
-      product: {
-        link: amzLink,
-        userid: localStorage.getItem('ept-userid'),
-        dropPrice: drop
-      }
-    }).then(res => {
-      if (res.data.success === true) {
-        setLoading(false);
-        setMsg('Product Added')
-        setModal2(false)
-      } else {
-        setLoading(false)
-        setMsg('Some Thing went wrong while Retrieving Product')
-      }
-    })
+    if (amzLink === false || drop === "false") {
+      setMsgerr('Please Enter Both Fields');
+      setLoading(false)
+    } else {
+
+      Axios.post(`//localhost:5000/product/add/amazon`, {
+        product: {
+          link: amzLink,
+          userid: localStorage.getItem('ept-userid'),
+          dropPrice: drop
+        }
+      }).then(res => {
+        if (res.data.success === true) {
+          setLoading(false);
+          setMsg('Product Added')
+          setModal2(false)
+        } else {
+          setLoading(false)
+          setMsg('Some Thing went wrong while Retrieving Product')
+        }
+      })
+    }
   }
 
   const addFlip = () => {
-    Axios.post(`/product/add/flipkart`, {
-      product: {
-        link: flipLink,
-        userid: localStorage.getItem('ept-userid'),
-        dropPrice: drop
-      }
-    }).then(res => {
-      if (res.data.success === true) {
-        setLoading(false);
-        setMsg('Product Added')
-        setModal1(false)
-      } else {
-        setLoading(false)
-        setMsg('Some Thing went wrong while Retrieving Product')
-      }
-    })
+    if (flipLink === false || drop === "false") {
+      setMsgerr('Please Enter Both Fields');
+      setLoading(false)
+    } else {
+
+      Axios.post(`//localhost:5000/product/add/flipkart`, {
+        product: {
+          link: flipLink,
+          userid: localStorage.getItem('ept-userid'),
+          dropPrice: drop
+        }
+      }).then(res => {
+        if (res.data.success === true) {
+          setLoading(false);
+          setMsg('Product Added')
+          setModal1(false)
+        } else {
+          setLoading(false)
+          setMsg('Some Thing went wrong while Retrieving Product')
+        }
+      })
+    }
   }
 
 
@@ -87,6 +101,7 @@ function Javascript(props) {
                   </button>
                   <h4 className="title title-up">FlipKart</h4>
                 </div>
+                {(msgerr) ? (<Alert color="danger">{msgerr}</Alert>) : false}
                 <ModalBody>
                   <p className="text-center">
                     Enter complete url with https and www
@@ -108,7 +123,10 @@ function Javascript(props) {
                   <Button
                     color="danger"
                     type="button"
-                    onClick={() => setModal1(false)}
+                    onClick={() => {
+                      setModal1(false);
+                      setMsgerr(false)
+                    }}
                   >
                     Close
                   </Button>
@@ -135,6 +153,7 @@ function Javascript(props) {
                   </button>
                   <h4 className="title title-up">Amazon</h4>
                 </div>
+                {(msgerr) ? (<Alert color="danger">{msgerr}</Alert>) : false}
                 <ModalBody>
                   <p className="text-center">
                     Enter complete url with https and www
@@ -156,7 +175,10 @@ function Javascript(props) {
                   <Button
                     color="danger"
                     type="button"
-                    onClick={() => { setModal2(false); }}
+                    onClick={() => {
+                      setModal2(false);
+                      setMsgerr(false)
+                    }}
                   >
                     Close
                   </Button>
