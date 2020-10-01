@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm start-dev \" \"npm run client\"",
+    "dev": "concurrently \"npm run start-dev \" \"npm run client\"",
     "start-dev": "nodemon index",
     "start": "node index.js",
     "client": "npm start --prefix client",
@@ -30,6 +30,7 @@
     "nodemailer": "^6.3.0",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "nodemon": "2.0.4"
   }
 }
